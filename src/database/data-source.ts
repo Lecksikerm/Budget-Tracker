@@ -2,15 +2,17 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 import { User } from '../common/entities/user.entity';
+import { Transaction } from 'src/common/entities/transaction.entity';
 
 dotenv.config();
-
-export const AppDataSource = new DataSource({
+const AppDataSource = new DataSource({
   type: 'postgres',
   url: process.env.DATABASE_URL,
-  entities: [User],
+  entities: [User, Transaction],
   migrations: [__dirname + '/../migrations/*{.ts,.js}'],
   synchronize: false,
   logging: true,
 });
 
+
+export default AppDataSource;
