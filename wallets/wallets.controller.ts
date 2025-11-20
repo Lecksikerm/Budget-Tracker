@@ -40,7 +40,7 @@ export class WalletsController {
 
     @ApiOperation({ summary: 'Delete a wallet' })
     @Delete('/:id')
-    remove(@Param('id') id: string, @UserDecorator('id') userId: string) {
-        return this.walletsService.remove(id, userId);
+    delete(@Param('id') id: string, @UserDecorator('id') userId: string) {
+        return this.walletsService.delete(id, userId);
     }
 }
