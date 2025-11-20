@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Base } from './base.entity';
 import { Transaction } from './transaction.entity';
+import { Wallet } from './wallet.entity';
 
 @Entity({ name: 'users' })
 export class User extends Base {
@@ -21,4 +22,8 @@ export class User extends Base {
 
     @OneToMany(() => Transaction, transaction => transaction.user)
     transactions: Transaction[];
+
+    @OneToMany(() => Wallet, wallet => wallet.user)
+    wallets: Wallet[];
+
 }
