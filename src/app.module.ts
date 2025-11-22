@@ -8,6 +8,8 @@ import { Transaction } from './common/entities/transaction.entity';
 import { TransactionsModule } from './transactions/transactions.module';
 import { WalletsModule } from 'wallets/wallets.module';
 import { Wallet } from './common/entities/wallet.entity';
+import { Budget } from './common/entities/budget.entity';
+import { BudgetsModule } from './budgets/budgets.module';
 
 @Module({
   imports: [
@@ -16,9 +18,9 @@ import { Wallet } from './common/entities/wallet.entity';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [User, Transaction, Wallet], 
-      synchronize: false, 
-      migrations: [__dirname + '/migrations/*{.ts,.js}'], 
+      entities: [User, Transaction, Wallet, Budget],
+      synchronize: false,
+      migrations: [__dirname + '/migrations/*{.ts,.js}'],
       logging: true,
     }),
 
@@ -26,11 +28,12 @@ import { Wallet } from './common/entities/wallet.entity';
     AuthModule,
     TransactionsModule,
     WalletsModule,
+    BudgetsModule,
 
 
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
 
